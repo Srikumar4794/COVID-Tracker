@@ -2,6 +2,8 @@
   <button (click)="getCountryResults()">Country Status</button>
   <button (click)="displayStateForm()">State Status</button>
 </span>
+<br>
+<br>
 
 <form [formGroup]="trackingForm" *ngIf="stateFormDisplay" (submit)="findStateStatus()">
   <div class="form-group">
@@ -11,6 +13,9 @@
   <div *ngIf = "errorPresent" style="color: red">Invalid state code!!Please re-enter</div>
   <button type="submit" class="btn btn-success">Submit</button>
 </form>
+
+<br>
+<br>
 
 <div *ngIf="!errorPresent">
   <div class="row">
