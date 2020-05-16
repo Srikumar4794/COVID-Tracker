@@ -1,0 +1,36 @@
+<span class="cdk-overlay-container">
+  <button (click)="getCountryResults()">Country Status</button>
+  <button (click)="displayStateForm()">State Status</button>
+</span>
+
+<form [formGroup]="trackingForm" *ngIf="stateFormDisplay" (submit)="findStateStatus()">
+  <div class="form-group">
+    <label for="ID">State Code</label>
+    <input style="width: 5em" type="text" class="form-control" id="ID" formControlName="stateId">
+  </div>
+  <div *ngIf = "errorPresent" style="color: red">Invalid state code!!Please re-enter</div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+<div *ngIf="!errorPresent">
+  <div class="row">
+    <div class="col-md-12">
+      <table id="customers">
+        <thead>
+        <th>Total Results</th>
+        <th>Positive</th>
+        <th>Negative</th>
+        <th>Death</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{results?.totalTestResults}}</td>
+          <td>{{results?.positive}}</td>
+          <td>{{results?.negative}}</td>
+          <td>{{results?.death}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
