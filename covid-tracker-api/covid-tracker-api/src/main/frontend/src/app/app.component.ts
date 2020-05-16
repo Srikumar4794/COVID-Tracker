@@ -15,6 +15,7 @@ export class AppComponent implements OnInit{
   trackingForm: FormGroup;
   results: StatusModel;
   stateFormDisplay: boolean = false;
+  country:boolean = false;
   errorPresent: boolean = false;
 
   constructor(private trackerService: TrackerService, private fb: FormBuilder) {
@@ -39,6 +40,7 @@ export class AppComponent implements OnInit{
   }
 
   findStateStatus(){
+    this.country = false;
     let stateCode: string = this.trackingForm.value.stateId;
     this.trackerService.getStateStatus(stateCode).subscribe((data) =>
     {
@@ -53,6 +55,7 @@ export class AppComponent implements OnInit{
   }
 
   getCountryResults() {
+    this.country = true;
     this.trackerService.getCountryStatus().subscribe(
       (data) => {
         this.errorPresent = false;
